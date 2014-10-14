@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | 记录学习的那些事</title>
+    <title>图片上传跨域解决方法 | 记录学习的那些事</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="JasonLu">
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in ">
+    <meta name="description" content="利用iframe以及jquery进行表单post提交
+1234567891011121314151617181920&amp;lt;script type=&quot;text/javascript&quot; src=&quot;http://code.jquery.com/jquery-1.7.2.js&quot;&amp;gt;&amp;lt;/scrip">
     
     
     
@@ -69,54 +70,68 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/10/13/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2014/10/14/first/" title="图片上传跨域解决方法" itemprop="url">图片上传跨域解决方法</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://luchongkang.github.io" title="JasonLu">JasonLu</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-10-13T08:04:18.000Z" itemprop="datePublished">10月 13 2014</time>
-    更新日期:<time datetime="2014-10-13T08:18:38.000Z" itemprop="dateModified">10月 13 2014</time>
+    <time datetime="2014-10-14T07:43:33.000Z" itemprop="datePublished">10月 14 2014</time>
+    更新日期:<time datetime="2014-10-14T08:10:52.000Z" itemprop="dateModified">10月 14 2014</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_d9jfaxyln18ovjrn">
+        <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="image">
+      </a>
+    
+      <a class="article-gallery-img fancybox" href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" rel="gallery_d9jfaxyln18ovjrn">
+        <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick_Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create_a_new_post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run_server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate_static_files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy_to_remote_sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用iframe以及jquery进行表单post提交"><span class="toc-number">1.</span> <span class="toc-text">利用iframe以及jquery进行表单post提交</span></a></li></ol>
 		</div>
 		
-		<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+		<h2 id="利用iframe以及jquery进行表单post提交">利用iframe以及jquery进行表单post提交</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-1.7.2.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-1.7.2.min.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">  $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{  </div><div class="line">     $(<span class="string">"#file"</span>).bind(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{<span class="comment">//对文件输入框绑定change事件</span></div><div class="line">             $(<span class="string">"#form"</span>).submit();  </div><div class="line">     });  </div><div class="line">})</div><div class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="title">form</span> <span class="attribute">action</span>=<span class="value">"跨域名接口"</span> <span class="attribute">id</span>=<span class="value">"form"</span> <span class="attribute">name</span>=<span class="value">"form"</span>   </span></div><div class="line">          <span class="attribute">enctype</span>=<span class="value">"multipart/form-data"</span> <span class="attribute">method</span>=<span class="value">"post"</span> <span class="attribute">target</span>=<span class="value">"hidden_frame"</span>&gt;  </div><div class="line">        <span class="tag">&lt;<span class="title">span</span>&gt;</span>  </div><div class="line">     </div><div class="line">            <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> <span class="attribute">id</span>=<span class="value">"file"</span> <span class="attribute">name</span>=<span class="value">"file"</span>/&gt;</span>  </div><div class="line">        <span class="tag">&lt;/<span class="title">span</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">name</span>=<span class="value">"hidden_frame"</span> <span class="attribute">id</span>=<span class="value">"hidden_frame"</span> <span class="attribute">style</span>=<span class="value">"display:none"</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="title">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>　　form的target要指定iframe的名称，这样就看不到页面的跳转了 。</p>
+<pre><code>target的几个属性值 ：
 
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-  
+值                描述
+<span class="number">_</span>blank       在新窗口中打开。
+<span class="number">_</span><span class="keyword">self</span>        默认。在相同的框架中打开。
+<span class="number">_</span>parent      在父框架集中打开。
+<span class="number">_</span>top         在整个窗口中打开。
+framename    在指定的框架中打开。
+我们可以看到form表单提交后页面没有做跳转，并且返回值，也在隐藏的iframe中展现。正体现了target的这种妙用。
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/javascript/">javascript</a>
+  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://luchongkang.github.io/2014/10/13/hello-world/" data-title="Hello World | 记录学习的那些事" data-tsina="null" class="share clearfix">
+  <div data-url="http://luchongkang.github.io/2014/10/14/first/" data-title="图片上传跨域解决方法 | 记录学习的那些事" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -125,14 +140,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/10/14/first/" title="图片上传跨域解决方法">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  图片上传跨域解决方法</span>
+
+<div class="next">
+<a href="/2014/10/13/hello-world/"  title="Hello World">
+ <strong>NEXT:</strong><br/> 
+ <span>Hello World
+</span>
 </a>
 </div>
-
 
 </nav>
 
@@ -146,7 +161,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick_Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create_a_new_post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run_server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate_static_files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy_to_remote_sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用iframe以及jquery进行表单post提交"><span class="toc-number">1.</span> <span class="toc-text">利用iframe以及jquery进行表单post提交</span></a></li></ol>
   </div>
 
 <div id="asidepart">
